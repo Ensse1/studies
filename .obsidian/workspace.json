@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Network+ Study Notes.md",
+                "file": "Network+_Study_Notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Network+ Study Notes"
+              "title": "Network+_Study_Notes"
             }
           }
         ]
@@ -186,6 +186,7 @@
   "active": "5e9e700e5076915f",
   "lastOpenFiles": [
     "Linux_notes.md",
+    "Network+_Study_Notes.md",
     "Network+ Study Notes.md",
     "Welcome.md"
   ]

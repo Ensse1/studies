@@ -24,16 +24,16 @@ The network layer
 The protocol we use in this layer is the internet protocol (ip). This layer includes routers. Routers use ip's to identify hosts on a local or public internet. Everyone has a unique ip address in a LAN and every modem has a unique public ip provided by their isp's. We can say that this isnt physical anymore.
 
 The transport layer
-In this layer we use ports. Also we use the TCP and UDP protocols for sending and receiving packets. TCP is a slower but safer way to send and receive packets. UDP is way faster but not too safe. This also helps us identify the host in a better way.
+In this layer we use ports. Also we use the TCP and UDP protocols for sending and receiving packets. TCP is a slower but reliable way to send and receive packets. UDP is way faster but not too reliable, means that the packet may be dropped or the integrity of it may be broken. This also helps us identify the host in a better way.
 
-The  session layer
+The session layer
 This layer opens ,maintains and closes the connection between hosts like a telephone call. It handles the connection.
 
-The  presentation layer
-This layer has SSL/TLS protocols. In thıs layer the 
+The presentation layer
+This layer has SSL/TLS protocols. It encrypts and decrypts data. This layer works with the application layer and this is the layer that happens prior to what we see on our screen.
 
 The application layer
-This layer is what we see with our eyes. for example the website or the app. We can also interact with it.
+This layer is what we see with our eyes on the screen. This layer has protocols like http, ftp, smtp, pop3.
 
 NETWORKING DEVICES
 
@@ -76,4 +76,18 @@ We can think of san as a virtually attached hard drive and nas as a filesystem
 Access point
 Access points are used in enterprise organizations or big buildings to connect devices to the wireless network across everywhere in the building. It only has a single purpose, to provide wireless connection. It is not a wireless router like the ones in our houses which is a router and an access point at the same time. AP is in the layer 2 of osi.  The access point is a bridge between the wired and wireless network. It extends the wired network to wireless network. 
 
+NETWORKING FUNCTIONS
 
+CDN (Content Delivery Network)
+When we are using the internet and go into a website. We usually arent going to the website server directly. We are going into the server cached in a cdn. But there is an exception for this which is if the server is not cached in the cdn we need to go back to the origin server and after we do that the cdn caches that website and when we want to access that website again we can see that there is a big difference in latency. For example im in Turkey and want to access to a site in Usa, Instead of going all the way to that server im going to the cdn which is closer to me and get a faster connection and delay.
+
+VPN (Virtual Private Network)
+Vpn's create a virtual private network tunnel between us and the destination. In this tunnel the data we sent is encrypted which makes our data content unreadable to threat actors, isp's etc. But still our isp can see that we are connected to a vpn and how much data we are sending. At the end of this tunnel our data is decrypted and got to the destination successfully. The hardware that do the encryption and decryption is contentrator or head-end. When we visit a website by using a vpn, the website sees the ip of the vpn server we are using instead of our public ip address which makes us more private. We also use vpn's to connect to enterprise networks. We may use a hardware to use a vpn if there are a lot of users who are going to use the vpn, but if we are in a small business or just using vpn in our home wifi we may use the manufacturers software to do so. Operating systems also come with default built in vpn clients.
+
+QoS (Quality of Service)
+QoS allows us to set the bandwith usage and queue priority on services. The higher prority services need more bandwith usage, so we give those services more priority. Lower priority services get lower bandwith usage and in return work slower. We can configure these on our routers, switches and firewalls. For example there's a udp video player and a tcp mailing service we are using. In order for our video player to function efficiently with minimum packet dropping we need to give it more priority in terms of bandwith usage. Our tcp service can work with lower levels of resources because if a packet gets dropped or fails to go to its destination the tcp service can still reacquire that missing packet without needing to start the connection from the beginning .
+
+TTL (Time To Live)
+As we may know computers are super efficient at automating tasks on a level which humans cant really do on their own. But there is a side effect to this which the the system might get into a loop and repeat the same task over and over again. To prevent this we have built a function called ttl. What this does is it drops the packet or stops the process when the process iterate a certain number of times, we may also select a duration time. It may also be used to clear a cache after a desired amount of time passes.
+In ip we use ttl to drop the packet after a certain amount of hops. If the maximum amount of hops are reached the packet is dropped. default ttl on linux is 64 and 128 on windows. ttl gets decreased by the router on each hop that happens.
+In dns ttl functions different. It is measured by the duration of the ip address that stays in our local cache. When we go into a website using the dns protocol, dns looks up the ip address of the domain name and allows us to access that website without having to remember the ip adress of that website. So after accessing that website the dns record of it is stored in our cache which allows us to access to that website faster in the until the duration that is set by the ttl is over. 
